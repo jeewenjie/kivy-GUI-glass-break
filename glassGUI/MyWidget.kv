@@ -1,0 +1,45 @@
+#:import MeshLinePlot kivy.garden.graph.MeshLinePlot
+Logic:
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            size_hint: [1, .7]
+            Graph:
+                id: graph
+                xlabel: ""
+                ylabel: "Volume Level"
+                ymin: 0 
+                ymax: 1
+
+
+        BoxLayout:
+            size_hint: [1, .1]
+            orientation: "horizontal"
+            Label:
+                id: prediction
+                text: '[b]'+root.pred_label+'[/b]'
+                color: root.font_color
+                font_size: 40
+                markup: True
+
+                canvas.before:
+                    Color:
+                        rgba: root.bg_color
+
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+        BoxLayout:
+            size_hint: [1, .2]
+            orientation: "horizontal"
+            Button:
+                text: "START"
+                font_size: 50
+                bold: True
+                on_press: root.start()
+            Button:
+                text: "STOP"
+                font_size: 50
+                bold: True
+                on_press: root.stop()
